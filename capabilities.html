@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Afronerd | Digital Capabilities</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Playfair+Display:wght@700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif} html{scroll-behavior:smooth} body{overflow-x:hidden;background:#fff;color:#111;line-height:1.6;} :root{--maroon:#800000;--dark:#0a0a0a;--cream:#fffaf5;--transition: all 0.4s ease;}
+header{position:fixed;top:0;width:100%;padding:25px 8%;display:flex;justify-content:space-between;align-items:center;z-index:999;background:rgba(0,0,0,0.4);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,0.1);transition:var(--transition);} header.sticky{padding:15px 8%;background:rgba(255,255,255,0.98);box-shadow:0 10px 30px rgba(0,0,0,0.1);border-bottom:none;} .logo{text-decoration:none;font-size:2rem;font-weight:800;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,0.5);transition:var(--transition);} header.sticky .logo{color:#111;text-shadow:none;} .logo span{color:var(--maroon);font-family:'Playfair Display',serif}
+nav ul{display:flex;gap:25px;list-style:none} nav a{text-decoration:none;color:#fff;font-size:.85rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;text-shadow:0 2px 10px rgba(0,0,0,0.8);transition:var(--transition);} header.sticky nav a{color:#111;text-shadow:none;} nav a:hover, nav a.active{color:var(--maroon);} .mobile-toggle{display:none;font-size:1.8rem;color:#fff;cursor:pointer;} header.sticky .mobile-toggle{color:#111;}
+.btn-premium{padding:16px 32px;border-radius:100px;background:var(--maroon);color:#fff !important;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:10px;text-shadow:none;border:2px solid var(--maroon);transition:var(--transition);cursor:pointer;} .btn-premium:hover{background:transparent;color:var(--maroon) !important;} .btn-outline{padding:16px 32px;border-radius:100px;background:transparent;color:#fff;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:10px;text-shadow:none;border:2px solid #fff;transition:var(--transition);} .btn-outline:hover{background:#fff;color:#111;}
+.hero{height:100vh;background:#000;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;padding:0 5%;overflow:hidden;} .hero-video{position:absolute;width:100%;height:100%;object-fit:cover;opacity:0.6;} .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,10,0.8),rgba(128,0,0,0.5));z-index:1;} .hero-slider-container{position:relative;z-index:2;width:100%;max-width:1200px;height:450px;display:flex;align-items:center;justify-content:center;} .hero-slide{position:absolute;width:100%;opacity:0;visibility:hidden;transform:translateY(20px);transition:opacity 0.8s ease, transform 0.8s ease, visibility 0.8s;} .hero-slide.active{opacity:1;visibility:visible;transform:translateY(0);} .glass-badge{display:inline-flex;padding:12px 20px;border-radius:100px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,0.2);margin-bottom:25px;font-size:0.85rem;letter-spacing:1px;font-weight:700;} .hero h1{font-size:clamp(3rem,6vw,6.5rem);font-family:'Playfair Display',serif;margin-bottom:20px;line-height:1.1;} .hero h1 span{color:#ffcccc;font-style:italic;} .hero p{line-height:1.9;font-size:1.15rem;margin:0 auto 40px;max-width:850px;} .slider-controls{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:15px;} .dot{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;transition:0.3s;} .dot.active{background:var(--maroon);transform:scale(1.3);}
+.section{padding:100px 8%} .section-header{margin-bottom:50px; text-align:center;} .section-header h4{color:var(--maroon);margin-bottom:15px;font-weight:800;letter-spacing:3px;} .section-header h2{font-size:clamp(2.5rem, 5vw, 3.5rem);font-family:'Playfair Display',serif;line-height:1.2;} .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:30px}
+.service-card{border-radius:30px;overflow:hidden;transition:var(--transition); position:relative;height:550px;cursor:pointer;} .service-card:hover{transform:translateY(-10px)} .service-card::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.95));transition:0.4s;} .service-img-bg{position:absolute;width:100%;height:100%;object-fit:cover;transition:transform 1s;} .service-card:hover .service-img-bg{transform:scale(1.1);} .service-overlay{position:absolute;inset:0;z-index:2;padding:40px;display:flex;flex-direction:column;justify-content:end;color:#fff} .service-overlay i{width:60px;height:60px;background:#fff;color:var(--maroon);display:flex;align-items:center;justify-content:center;border-radius:15px;margin-bottom:20px;font-size:1.5rem;} .service-overlay h3{font-size:2.2rem;margin-bottom:10px;font-family:'Playfair Display',serif} .service-overlay p{opacity:0.8; margin-bottom: 15px;} .trend-pill { display:inline-block; background:var(--maroon); color:#fff; font-size:0.7rem; padding:4px 10px; border-radius:50px; margin-right:5px; font-weight:bold; }
+.contact-section{background:var(--dark);color:#fff;} .contact-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:60px;align-items:center} .map-box iframe{width:100%;height:450px;border:0;filter:contrast(1.1);} .map-box{border-radius:30px;overflow:hidden;border:4px solid #222;} footer{text-align:center;padding:30px;background:#050505;color:#666;font-size:0.9rem;letter-spacing:1px;}
+@media(max-width:992px){ .mobile-toggle{display:block} .desktop-btn{display:none} nav{position:absolute;top:100%;left:0;width:100%;background:#fff;padding:30px;display:none;box-shadow:0 10px 30px rgba(0,0,0,0.1);} nav.active{display:block} nav ul{flex-direction:column;gap:20px;text-align:center;} nav a{color:#111;text-shadow:none;font-size:1.1rem;} }
+</style>
+</head>
+<body>
+
+<header id="navbar">
+<a href="index.html" class="logo">AFRO<span>NERD.</span></a>
+<nav id="navMenu">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="ai-engine.html">AI Engine</a></li>
+<li><a href="capabilities.html" class="active">Capabilities</a></li>
+<li><a href="process.html">Process</a></li>
+<li><a href="delivery.html">Delivery</a></li>
+<li><a href="journal.html">Journal</a></li>
+<li><a href="about.html">About Us</a></li>
+</ul>
+</nav>
+<a href="mailto:dannymwema@outlook.com" class="btn-premium desktop-btn">START PROJECT</a>
+<div class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></div>
+</header>
+
+<section class="hero">
+<video autoplay muted loop playsinline class="hero-video">
+<source src="landing-page-video.mp4" type="video/mp4">
+</video>
+<div class="hero-overlay"></div>
+<div class="hero-slider-container">
+    <div class="hero-slide active">
+        <div class="glass-badge">DIGITAL CAPABILITIES</div>
+        <h1>World-Class <span style="color:var(--maroon);">Craft.</span></h1>
+        <p>From hyper-fast Next.js architecture to breathtaking personal portfolios and Headless E-commerce, we build platforms that out-perform, out-rank, and out-convert your competition.</p>
+    </div>
+    <div class="hero-slide">
+        <div class="glass-badge">THE APEX OF ENGINEERING</div>
+        <h1>Intelligence <span>Defined.</span></h1>
+        <p>World-class software delivery, bespoke financial systems, and next-generation AI integrations. Crafted at Garden City Mall, Nairobi.</p>
+    </div>
+    <div class="hero-slide">
+        <div class="glass-badge">NAIROBI'S PREMIER AGENCY</div>
+        <h1>We code <span>reality.</span></h1>
+        <p>Elite web development engineered for brands that refuse to blend in. Operating globally from Garden City Mall.</p>
+    </div>
+</div>
+<div class="slider-controls">
+    <span class="dot active" onclick="setSlide(0)"></span>
+    <span class="dot" onclick="setSlide(1)"></span>
+    <span class="dot" onclick="setSlide(2)"></span>
+</div>
+</section>
+
+<section class="section">
+<div class="section-header" data-aos="fade-up">
+<h4>WHAT WE BUILD</h4>
+<h2>Engineering the <span style="color:var(--maroon)">Web Experience</span></h2>
+<p style="color:#666; max-width:800px; margin:20px auto 0; font-size:1.1rem;">We discard templates. Every line of code and pixel we push is custom-tailored using the latest frameworks (React 19, Next.js 15, WebGL) to ensure your brand sets the industry standard.</p>
+</div>
+
+<div class="grid-3">
+    <div class="service-card" data-aos="fade-up">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200" class="service-img-bg">
+        <div class="service-overlay">
+            <i class="fas fa-code"></i>
+            <h3>Elite Web Engineering</h3>
+            <p>Modern scalable platforms engineered with Server-Side Rendering (SSR) for instant load times and perfect technical SEO.</p>
+            <div>
+                <span class="trend-pill">Next.js</span>
+                <span class="trend-pill">Tailwind CSS</span>
+                <span class="trend-pill">Edge Computing</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200" class="service-img-bg">
+        <div class="service-overlay">
+            <i class="fas fa-user-tie"></i>
+            <h3>Executive Portfolios</h3>
+            <p>Command authority online. We build immersive, interactive digital resumes utilizing 3D micro-interactions and scroll-triggered animations.</p>
+            <div>
+                <span class="trend-pill">Three.js</span>
+                <span class="trend-pill">Framer Motion</span>
+                <span class="trend-pill">Premium UX</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200" class="service-img-bg">
+        <div class="service-overlay">
+            <i class="fas fa-shopping-cart"></i>
+            <h3>Headless E-Commerce</h3>
+            <p>Decoupling the frontend from the backend to deliver omnichannel shopping experiences with sub-second checkout speeds.</p>
+            <div>
+                <span class="trend-pill">Shopify Plus API</span>
+                <span class="trend-pill">Sanity CMS</span>
+                <span class="trend-pill">Web3 Payments</span>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<section class="section contact-section" id="contact">
+<div class="contact-wrap">
+<div data-aos="fade-right">
+<h4 style="color:var(--maroon);margin-bottom:15px;font-weight:800;letter-spacing:2px;">GET IN TOUCH</h4>
+<h2 style="font-size:3.5rem;margin-bottom:25px;font-family:'Playfair Display',serif;">Visit the <span style="color:var(--maroon)">Studio.</span></h2>
+<p style="color:#ccc;margin-bottom:30px;font-size:1.1rem;">Garden City Mall, Thika Road, Nairobi. Open for strategy sessions by appointment.</p>
+<div style="display:grid;gap:20px;color:#eee;font-size:1.1rem;">
+<p><i class="fas fa-map-marker-alt" style="color:var(--maroon);width:30px;"></i> Garden City Mall, Nairobi, Kenya</p>
+<p><i class="fas fa-phone" style="color:var(--maroon);width:30px;"></i> +254 716 547 840</p>
+<p><i class="fas fa-envelope" style="color:var(--maroon);width:30px;"></i> dannymwema@outlook.com</p>
+</div>
+<br><a href="mailto:dannymwema@outlook.com" class="btn-premium">Email Us Now</a>
+</div>
+<div class="map-box" data-aos="zoom-in"><iframe src="https://maps.google.com/maps?q=Garden%20City%20Mall,%20Nairobi&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe></div>
+</div>
+</section>
+
+<footer>© 2026 AFRONERD — Engineered for Excellence in Nairobi.</footer>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({duration:1000,once:true});
+document.getElementById('mobileToggle').onclick=function(){document.getElementById('navMenu').classList.toggle('active');};
+window.onscroll = function() {let nav = document.getElementById('navbar'); if (window.pageYOffset > 50) nav.classList.add('sticky'); else nav.classList.remove('sticky');};
+let currentSlideIndex = 0; const slides = document.querySelectorAll('.hero-slide'); const dots = document.querySelectorAll('.dot');
+function showSlide(index) {slides.forEach(slide => slide.classList.remove('active')); dots.forEach(dot => dot.classList.remove('active')); slides[index].classList.add('active'); dots[index].classList.add('active');}
+function nextSlide() {currentSlideIndex = (currentSlideIndex + 1) % slides.length; showSlide(currentSlideIndex);}
+function setSlide(index) {currentSlideIndex = index; showSlide(currentSlideIndex); clearInterval(slideInterval); slideInterval = setInterval(nextSlide, 6000);}
+let slideInterval = setInterval(nextSlide, 6000);
+</script>
+</body>
+</html>
